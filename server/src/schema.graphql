@@ -1,12 +1,16 @@
 # import Post from "./generated/prisma.graphql"
 
 type Query {
+  talk(id: ID!): Talk
+  talks: [Talk!]!
   feed: [Post!]!
   drafts: [Post!]!
   post(id: ID!): Post
 }
 
 type Mutation {
+  createTalk(text: String!): Talk
+  deleteTalk(id: ID!): Talk
   createDraft(title: String!, text: String): Post
   deletePost(id: ID!): Post
   publish(id: ID!): Post

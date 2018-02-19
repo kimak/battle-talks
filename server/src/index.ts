@@ -5,6 +5,12 @@ import { Context } from "./utils";
 
 const resolvers = {
   Query: {
+    talk(parent, { id }, context: Context, info) {
+      return context.db.query.talk({ where: { id: id } }, info);
+    },
+    talks(parent, args, context: Context, info) {
+      return context.db.query.talks({}, info);
+    },
     feed(parent, args, context: Context, info) {
       return context.db.query.posts({ where: { isPublished: true } }, info);
     },
