@@ -13,6 +13,7 @@ type Battle implements Node {
   id: ID!
   createdAt: DateTime!
   talk(where: TalkWhereInput): Talk!
+  ready: Boolean!
   code: String!
 }
 
@@ -73,6 +74,7 @@ type BattleConnection {
 }
 
 input BattleCreateInput {
+  ready: Boolean
   code: String!
   talk: TalkCreateOneInput!
 }
@@ -92,6 +94,8 @@ enum BattleOrderByInput {
   id_DESC
   createdAt_ASC
   createdAt_DESC
+  ready_ASC
+  ready_DESC
   code_ASC
   code_DESC
   updatedAt_ASC
@@ -101,6 +105,7 @@ enum BattleOrderByInput {
 type BattlePreviousValues {
   id: ID!
   createdAt: DateTime!
+  ready: Boolean!
   code: String!
 }
 
@@ -122,11 +127,13 @@ input BattleSubscriptionWhereInput {
 }
 
 input BattleUpdateDataInput {
+  ready: Boolean
   code: String
   talk: TalkUpdateOneInput
 }
 
 input BattleUpdateInput {
+  ready: Boolean
   code: String
   talk: TalkUpdateOneInput
 }
@@ -176,6 +183,8 @@ input BattleWhereInput {
   createdAt_lte: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
+  ready: Boolean
+  ready_not: Boolean
   code: String
   code_not: String
   code_in: [String!]
@@ -742,6 +751,8 @@ export type BattleOrderByInput =
   'id_DESC' |
   'createdAt_ASC' |
   'createdAt_DESC' |
+  'ready_ASC' |
+  'ready_DESC' |
   'code_ASC' |
   'code_DESC' |
   'updatedAt_ASC' |
@@ -946,6 +957,8 @@ export interface BattleWhereInput {
   createdAt_lte?: DateTime
   createdAt_gt?: DateTime
   createdAt_gte?: DateTime
+  ready?: Boolean
+  ready_not?: Boolean
   code?: String
   code_not?: String
   code_in?: String[] | String
@@ -973,11 +986,13 @@ export interface TalkUpdateOneInput {
 }
 
 export interface BattleUpdateDataInput {
+  ready?: Boolean
   code?: String
   talk?: TalkUpdateOneInput
 }
 
 export interface BattleUpdateInput {
+  ready?: Boolean
   code?: String
   talk?: TalkUpdateOneInput
 }
@@ -1071,6 +1086,7 @@ export interface InvitedCodeCreateInput {
 }
 
 export interface BattleCreateInput {
+  ready?: Boolean
   code: String
   talk: TalkCreateOneInput
 }
@@ -1271,6 +1287,7 @@ export interface Battle extends Node {
   id: ID_Output
   createdAt: DateTime
   talk: Talk
+  ready: Boolean
   code: String
 }
 
@@ -1303,6 +1320,7 @@ export interface InvitedCodeSubscriptionPayload {
 export interface BattlePreviousValues {
   id: ID_Output
   createdAt: DateTime
+  ready: Boolean
   code: String
 }
 

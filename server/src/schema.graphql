@@ -13,7 +13,12 @@ type Mutation {
   createTalk(text: String!): Talk
   deleteTalk(id: ID!): Talk
   createBattle(text: String!): Battle
+  updateBattle(id: ID!, ready: Boolean!): Battle
   createDraft(title: String!, text: String): Post
   deletePost(id: ID!): Post
   publish(id: ID!): Post
+}
+
+type Subscription {
+  battle: BattleSubscriptionPayload
 }

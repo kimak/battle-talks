@@ -40,6 +40,15 @@ const resolvers = {
         info
       );
     },
+    updateBattle(parent, { id, ready }, context: Context, info) {
+      return context.db.mutation.updateBattle(
+        {
+          where: { id },
+          data: { ready: ready }
+        },
+        info
+      );
+    },
     createDraft(parent, { title, text }, context: Context, info) {
       return context.db.mutation.createPost({ data: { title, text } }, info);
     },
@@ -54,6 +63,23 @@ const resolvers = {
         },
         info
       );
+    }
+  },
+  Subscription: {
+    battle: {
+      subscribe: async (parent, args, context: Context, info) => {
+        return context.db.subscription.battle(
+          {
+            /*
+            https://github.com/graphcool/prisma/issues/1734
+            where: {
+              mutation_in: ["UPDATED"],
+              updatedFields_contains: "ready"
+            }*/
+          },
+          info
+        );
+      }
     }
   }
 };
