@@ -3,6 +3,7 @@
 type Query {
   talk(id: ID!): Talk
   talks: [Talk!]!
+  battles: [Battle!]!
   feed: [Post!]!
   drafts: [Post!]!
   post(id: ID!): Post
@@ -11,6 +12,7 @@ type Query {
 type Mutation {
   createTalk(text: String!): Talk
   deleteTalk(id: ID!): Talk
+  createBattle(text: String!): Battle
   createDraft(title: String!, text: String): Post
   deletePost(id: ID!): Post
   publish(id: ID!): Post

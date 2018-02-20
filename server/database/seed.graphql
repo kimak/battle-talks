@@ -2,11 +2,9 @@ mutation {
   first: createTalk(data: { text: "Jambes de bois ou petits canards ?" }) {
     id
   }
-
   second: createTalk(data: { text: "Orange ou Banane ?" }) {
     id
   }
-
   third: createTalk(data: { text: "L'école est elle égalitaire ?" }) {
     id
   }

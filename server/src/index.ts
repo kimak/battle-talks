@@ -1,6 +1,6 @@
 import { GraphQLServer } from "graphql-yoga";
 import { importSchema } from "graphql-import";
-import { Prisma } from "./generated/prisma";
+import { Prisma, BattleCreateInput } from "./generated/prisma";
 import { Context } from "./utils";
 
 const resolvers = {
@@ -10,6 +10,9 @@ const resolvers = {
     },
     talks(parent, args, context: Context, info) {
       return context.db.query.talks({}, info);
+    },
+    battles(parent, args, context: Context, info) {
+      return context.db.query.battles({}, info);
     },
     feed(parent, args, context: Context, info) {
       return context.db.query.posts({ where: { isPublished: true } }, info);
@@ -22,6 +25,21 @@ const resolvers = {
     }
   },
   Mutation: {
+    async createBattle(parent, { text }, context: Context, info) {
+      let talk = await context.db.query.talk({ where: { text: text } }, info);
+      if (!talk) {
+        talk = await context.db.mutation.createTalk({ data: { text } }, info);
+      }
+      return await context.db.mutation.createBattle(
+        {
+          data: {
+            talk: { connect: { id: talk.id } },
+            code: "ABCD"
+          }
+        },
+        info
+      );
+    },
     createDraft(parent, { title, text }, context: Context, info) {
       return context.db.mutation.createPost({ data: { title, text } }, info);
     },
@@ -46,7 +64,8 @@ const server = new GraphQLServer({
   context: req => ({
     ...req,
     db: new Prisma({
-      endpoint: "https://eu1.prisma.sh/public-berryjackal-170/server/dev", // the endpoint of the Prisma DB service
+      //endpoint: "https://eu1.prisma.sh/public-berryjackal-170/server/dev", // the endpoint of the Prisma DB service
+      endpoint: "http://localhost:4466/battle-talks/dev",
       secret: "mysecret123", // specified in database/prisma.yml
       debug: true // log all GraphQL queries & mutations
     })

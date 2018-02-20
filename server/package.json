@@ -5,6 +5,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "npm-run-all --parallel start playground",
+    "deploy": "prisma deploy",
+    "reset": "prisma local nuke",
     "playground": "graphql playground"
   },
   "repository": {

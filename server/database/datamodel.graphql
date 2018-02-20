@@ -8,5 +8,24 @@ type Post {
 type Talk {
   id: ID! @unique
   createdAt: DateTime!
-  text: String!
+  text: String! @unique
+}
+
+type InvitedCode {
+  code: String! @unique
+}
+
+type Battle {
+  id: ID! @unique
+  createdAt: DateTime!
+  talk: Talk!
+  code: String!
+}
+
+type User {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  username: String
+  battles: [Battle!]!
 }
