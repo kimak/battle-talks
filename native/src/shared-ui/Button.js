@@ -1,19 +1,10 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-
-const styles = StyleSheet.create({
-  root: {
-    backgroundColor: "#50E3C2",
-    padding: 20,
-    margin: 10,
-    alignItems: "center"
-  }
-});
+import { Button as PaperButton } from "react-native-paper";
 
 const Button = props => (
-  <TouchableOpacity onPress={props.onPress} style={styles.root}>
-    <Text>{props.label}</Text>
-  </TouchableOpacity>
+  <PaperButton primary raised onPress={props.onPress}>
+    {props.label}
+  </PaperButton>
 );
 
 export default Button;

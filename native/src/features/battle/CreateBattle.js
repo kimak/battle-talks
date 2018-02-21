@@ -1,10 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Button from "../../shared-ui/Button";
+import TextInput from "../../shared-ui/TextInput";
 
 const CreateBattle = props => (
   <View style={styles.container}>
-    <Text>Un peu de politesse, quel est ton nom ?</Text>
+    <Text>Un peu de politesse, c'est quoi ton blase ?</Text>
+    <TextInput placeholder="Username" />
     <Button label="Inviter un ami" onPress={props.navigateTo} />
   </View>
 );

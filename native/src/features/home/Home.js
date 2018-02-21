@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import Button from "../../shared-ui/Button";
+import { Button, Headline, TextInput } from "../../shared-ui";
 
 const Home = props => (
   <View style={styles.container}>
-    <Text>Un avis sur tout mais surtout un avis !</Text>
+    <Headline primary label="Un avis sur tout mais surtout un avis !" />
     <Button onPress={props.navigateTo} label="Commencer" />
   </View>
 );
