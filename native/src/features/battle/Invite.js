@@ -8,6 +8,7 @@ const Invite = props => (
       DEMANDE À TON ADVERSAIRE ET À TON PUBLIC DE REJOINDRE LE DÉBAT EN
       SAISISSANT CE CODE
     </Text>
+    <Text>{props.navParams.code}</Text>
     <Button label="Choisir son camp" onPress={props.navigateTo} />
   </View>
 );

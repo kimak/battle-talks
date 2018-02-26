@@ -1,6 +1,5 @@
 import React from "react";
 import { gql } from "apollo-boost";
-import { Query } from "react-apollo";
 import Talks from "./Talks";
 import SmartQuery from "../../shared-ui/SmartQuery";
 
@@ -15,8 +14,11 @@ const talksQuery = gql`
 
 const mapHandlers = props => {
   return {
-    navigateTo() {
-      props.navigation.navigate("CreateBattle");
+    navigateTo(id, text) {
+      props.navigation.navigate("CreateBattle", {
+        battleId: id,
+        battleText: text
+      });
     }
   };
 };

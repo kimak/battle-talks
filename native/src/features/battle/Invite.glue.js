@@ -9,5 +9,13 @@ const mapHandlers = props => {
   };
 };
 
-const InviteGlue = props => <Invite {...mapHandlers(props)} />;
+const mapProps = props => {
+  return {
+    navParams: props.navigation.state.params
+  };
+};
+
+const InviteGlue = props => (
+  <Invite {...mapHandlers(props)} {...mapProps(props)} />
+);
 export default InviteGlue;

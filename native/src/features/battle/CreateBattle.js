@@ -5,9 +5,10 @@ import TextInput from "../../shared-ui/TextInput";
 
 const CreateBattle = props => (
   <View style={styles.container}>
+    {console.log(props)}
     <Text>Un peu de politesse, c'est quoi ton blase ?</Text>
     <TextInput placeholder="Username" />
-    <Button label="Inviter un ami" onPress={props.navigateTo} />
+    <Button label="Inviter un ami" onPress={props.createBattle} />
   </View>
 );
 
