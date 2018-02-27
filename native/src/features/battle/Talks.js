@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#5F737B"
   }
 });
-
 const Talks = props => (
   <View style={styles.container}>
     <Swiper dotColor="#50E3C2" activeDotColor="#FFF">
@@ -26,11 +25,12 @@ const Talks = props => (
             <Headline label={item.text} style={{ color: "#FFF" }} />
             <Button
               label="Choisir ce sujet"
-              onPress={props.navigateTo.bind(this, item.id, item.text)}
+              onPress={props.navigateToCreate.bind(this, item.id, item.text)}
             />
           </View>
         ))}
     </Swiper>
+    <Button label="Rejoindre une bataille" onPress={props.navigateToJoin} />
   </View>
 );
 

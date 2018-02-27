@@ -7,6 +7,7 @@ import BattleScreen from "../features/battle/Battle";
 import InviteScreen from "../features/battle/Invite.glue";
 import SideChooseScreen from "../features/battle/SideChoose.glue";
 import CreateBattleScreen from "../features/battle/CreateBattle.glue";
+import JoinScreen from "../features/battle/Join.glue";
 import HomeScreen from "../features/home/Home.glue";
 
 export default StackNavigator({
@@ -42,6 +43,12 @@ export default StackNavigator({
   },
   Battle: {
     screen: BattleScreen,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Join: {
+    screen: JoinScreen,
     navigationOptions: {
       header: null
     }

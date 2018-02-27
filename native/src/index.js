@@ -12,8 +12,9 @@ const theme = {
   }
 };
 
+//uri: "https://battle-talks-server-gxamsltgcx.now.sh"
 const client = new ApolloClient({
-  uri: "http://localhost:4000"
+  uri: "http://192.168.1.68:4000"
 });
 
 const App = () => (

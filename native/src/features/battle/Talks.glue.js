@@ -11,14 +11,16 @@ const talksQuery = gql`
     }
   }
 `;
-
 const mapHandlers = props => {
   return {
-    navigateTo(id, text) {
+    navigateToCreate(id, text) {
       props.navigation.navigate("CreateBattle", {
         battleId: id,
         battleText: text
       });
+    },
+    navigateToJoin() {
+      props.navigation.navigate("Join");
     }
   };
 };

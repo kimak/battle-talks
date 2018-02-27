@@ -9,7 +9,7 @@ const Invite = props => (
       SAISISSANT CE CODE
     </Text>
     <Text>{props.navParams.code}</Text>
-    <Button label="Choisir son camp" onPress={props.navigateTo} />
+    {/*<Button label="Choisir son camp" onPress={props.navigateTo} />*/}
   </View>
 );
 
