@@ -3,6 +3,12 @@ import { importSchema } from "graphql-import";
 import { Prisma, BattleCreateInput } from "./generated/prisma";
 import { Context } from "./utils";
 
+const alpha: string[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+let codes: string[] = alpha.map((key, index) => {
+  if (index < alpha.length - 4) return alpha.slice(index, index + 4).join("");
+});
+let index = 0;
+
 const resolvers = {
   Query: {
     talk(parent, { id }, context: Context, info) {
@@ -30,21 +36,28 @@ const resolvers = {
       if (!talk) {
         talk = await context.db.mutation.createTalk({ data: { text } }, info);
       }
+      const code: string = codes[index];
+      index++;
       return await context.db.mutation.createBattle(
         {
           data: {
             talk: { connect: { id: talk.id } },
-            code: "ABCD"
+            code: code
           }
         },
         info
       );
     },
-    updateBattle(parent, { id, ready }, context: Context, info) {
+    updateBattle(
+      parent,
+      { id, ready, waiting: waiting, complete },
+      context: Context,
+      info
+    ) {
       return context.db.mutation.updateBattle(
         {
           where: { id },
-          data: { ready: ready }
+          data: { ready: ready, waiting, complete }
         },
         info
       );

@@ -19,7 +19,9 @@ type Battle {
   id: ID! @unique
   createdAt: DateTime!
   talk: Talk!
+  waiting: Boolean! @default(value: "false")
   ready: Boolean! @default(value: "false")
+  complete: Boolean! @default(value: "false")
   code: String!
 }
 

@@ -5,8 +5,8 @@ service: battle-talks
 stage: dev
 
 # to disable authentication:
-# disableAuth: true
-secret: mysecret123
+disableAuth: true
+# secret: mysecret123
 
 # the file path pointing to your data model
 datamodel: datamodel.graphql
